@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Header.css"
-import logo from "../../../img/Home_pic.jpg"
+import logo from "../../../img/Home_pic.png"
 import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
@@ -11,10 +11,10 @@ const Header = () => {
   <Navbar.Brand as={Link} to="/"> 
   <div className='d-flex'>
   <img src={logo}/> 
-  <p>
-  <span>DMJH</span> 
-  <br/> <small>HEALTH CARE</small>
-  </p>
+  <div className='ms-3 gap-2'>
+  <p>DMJH</p> 
+   <small>HEALTH CARE</small>
+  </div>
   </div>
   </Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
