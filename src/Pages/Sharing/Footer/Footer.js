@@ -1,10 +1,16 @@
 import React from 'react';
+import { Container, Navbar } from 'react-bootstrap';
+import './Footer.css'
 
 const Footer = () => {
   return (
-    <div>
-      <h5> This is Footer</h5>
-    </div>
+    <footer className='fixed-bottom' >
+      <Navbar bg="dark">
+    <Container >
+      <Navbar.Brand className="text-white fs-6" >Copright @</Navbar.Brand>
+    </Container>
+  </Navbar>
+    </footer>
   );
 };
 

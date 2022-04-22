@@ -15,7 +15,7 @@ const Banner = () => {
   }
   return (
     <div>
-      <Container>
+      <Container className='my-3'>
   <Row>
     <Col sm={6}>
     <Carousel variant="dark">
@@ -55,7 +55,7 @@ const Banner = () => {
       <div>
         <h2>Information About Consultant</h2> 
         <p>Dr. Mohammad Jahangir Talukder is a reputed Internal Medicine specialist in Bangladesh. He is experienced in the treatment of Acute medical emergency, Respiratory, Endocrine, and Infectious diseases.......... </p>
-        <Button onClick={DoctorDescription} variant="info">Click here for Details</Button>{' '}
+        <Button onClick={DoctorDescription}  variant="info">Click here for Details</Button>{' '}
       </div>  
       </Col>
   </Row>
