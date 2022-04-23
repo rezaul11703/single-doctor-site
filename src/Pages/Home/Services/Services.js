@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import logo5 from '../../../img/5.jpg'
 import logo6 from '../../../img/6.jpg'
 import logo7 from '../../../img/7.jpg'
-
 const Services = () => {
   return (
     <div>

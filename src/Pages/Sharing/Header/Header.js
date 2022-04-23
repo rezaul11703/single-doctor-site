@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 const Header = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect sticky="top" expand="lg" bg="dark" variant="dark">
   <Container>
   <Navbar.Brand as={Link} to="/"> 
   <div className='d-flex'>
