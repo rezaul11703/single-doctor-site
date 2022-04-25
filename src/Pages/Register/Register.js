@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, Row, Spinner } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword,useSendEmailVerification} from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import '../Log In/LogIn.css'
 
 const Register = () => {
+  const navigate = useNavigate()
   
     const [agree,setAgree]=useState(false)
     const [email, setEmail] = useState('');
@@ -16,28 +17,21 @@ const Register = () => {
       loading,
       error,
     ] = useCreateUserWithEmailAndPassword(auth);
-    const [sendEmailVerification , sending, error1] = useSendEmailVerification(
-      auth)
-   const setRegEmail=event=>{
+    
+   const setRegEmail=(event)=>{
      setEmail(event.target.value)
+     console.log(email)
    }
-   const setPass=event=>{
-      setPassword(event.tartget.value)
+   const setPass=(event)=>{
+      setPassword(event.target.value)
+      console.log(password)
    }
-   const handleRegister=event=>{
+   const handleRegister= (event) =>{
      event.preventDefault()
      //for creating new user
-     
+     createUserWithEmailAndPassword(email, password)
      // for sentEmailveirfcation
-     
-     if(agree){
-      createUserWithEmailAndPassword(email, password)
-      .then(()=>{
-        sendEmailVerification();
-      })
 
-     }
-   }
     if (error) {
       return (
         <div>
@@ -49,17 +43,11 @@ const Register = () => {
       return <Spinner animation="grow" />;
     }
     if (user) {
-      return (
-        <div>
-          <p>Registered User: {user.email}</p>
-        </div>
-      );
-      
+      navigate('/login')
+      alert("Successfully registered")
     }
-    if(sending){
-      return <p> Email Verification Sent</p>
-    }
-    
+
+  }
     
   return (
     <div>
