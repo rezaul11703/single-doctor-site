@@ -3,14 +3,16 @@ import "./Header.css"
 import logo from "../../../img/Home_pic.png"
 import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown, Offcanvas } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 const Header = () => {
   const [user]=useAuthState(auth)
+  const navigate=useNavigate()
   const handleSignout=()=>{
     signOut(auth)
+    navigate('/login')
   }
   return (
     <Navbar collapseOnSelect sticky="top" expand="lg" bg="dark" variant="dark">
@@ -31,17 +33,13 @@ const Header = () => {
       <Nav.Link  as={Link} to="appoinment">
         Appoinment
       </Nav.Link>
-      
       <Nav.Link as={Link} to="about">About</Nav.Link>
       <Nav.Link as={Link} to="blog">
         Blog
       </Nav.Link>
-      { user ? <Button onClick={handleSignout}> Signout</Button>
+      { !user ? <Nav.Link as={Link} to="login">Log In</Nav.Link>
       :
-      <Nav.Link as={Link} to="login">Log In</Nav.Link>}
-      <Nav.Link  as={Link} to="register">
-        Register
-      </Nav.Link>
+      <Button onClick={handleSignout}> SignOut</Button>}
     </Nav>
   </Navbar.Collapse>
   </Container>

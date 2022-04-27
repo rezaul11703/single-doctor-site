@@ -28,8 +28,10 @@ const Register = () => {
      event.preventDefault()
      //for creating new user
      createUserWithEmailAndPassword(email, password)
-     // for sentEmailveirfcation
-
+     
+    if (user) {
+      navigate('/login')
+    }
     if (error) {
       return (
         <div>
@@ -37,14 +39,6 @@ const Register = () => {
         </div>
       );
     }
-    if (loading) {
-      return <Spinner animation="grow" />;
-    }
-    if (user) {
-      navigate('/login')
-      alert("Successfully registered")
-    }
-
   }
     
   return (

@@ -10,6 +10,7 @@ import About from './Pages/About/About';
 import Blog from './Pages/Blog/Blog';
 import Footer from './Pages/Sharing/Footer/Footer';
 import DoctorsBlog from './Pages/Home/DoctorsBlog.js/DoctorsBlog';
+import Error from './Pages/Error/Error';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/doctorsBlog' element={<DoctorsBlog></DoctorsBlog>}></Route>
+        <Route path='*' element={<Error></Error>}> </Route>
       </Routes>
       <Footer></Footer>
     </div>
