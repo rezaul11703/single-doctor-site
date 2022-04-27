@@ -20,12 +20,10 @@ const Register = () => {
     
    const setRegEmail=(event)=>{
      setEmail(event.target.value)
-     console.log(email)
    }
    const setPass=(event)=>{
-      setPassword(event.target.value)
-      console.log(password)
-   }
+      setPassword(event.target.value)}
+     
    const handleRegister= (event) =>{
      event.preventDefault()
      //for creating new user
