@@ -8,6 +8,7 @@ const Services = () => {
   return (
     <div>
       <Container className='my-5'>
+        <h2> Treatment Category</h2>
       <Row>
     <Col>
     <Card style={{ width: '18rem' }}>

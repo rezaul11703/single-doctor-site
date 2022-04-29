@@ -11,6 +11,7 @@ import Blog from './Pages/Blog/Blog';
 import Footer from './Pages/Sharing/Footer/Footer';
 import DoctorsBlog from './Pages/Home/DoctorsBlog.js/DoctorsBlog';
 import Error from './Pages/Error/Error';
+import RequiredAuth from './Pages/Sharing/RequiredAuth/RequiredAuth';
 
 function App() {
   return (
@@ -18,7 +19,11 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/appoinment' element={<Appoinment></Appoinment>}></Route>
+        <Route path='/appoinment' element={
+          <RequiredAuth>
+            <Appoinment></Appoinment>
+          </RequiredAuth>
+        }></Route>
         <Route path='/login' element={<LogIn></LogIn>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/about' element={<About></About>}></Route>

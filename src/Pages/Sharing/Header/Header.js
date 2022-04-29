@@ -37,11 +37,15 @@ const Header = () => {
       <Nav.Link as={Link} to="blog">
         Blog
       </Nav.Link>
-      { !user ? <Nav.Link as={Link} to="login">Log In</Nav.Link>
-      :
-      <Button onClick={handleSignout}> SignOut</Button>}
+      {
+        user ? <button onClick={handleSignout}> signOut</button>
+        :
+        <Nav.Link as={Link} to="login">Log In</Nav.Link>
+      }
     </Nav>
+    
   </Navbar.Collapse>
+  
   </Container>
 </Navbar>
   );

@@ -1,3 +1,4 @@
+import { sendEmailVerification } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Button, Col, Form, Row, Spinner } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword,useSendEmailVerification} from 'react-firebase-hooks/auth';
@@ -7,7 +8,6 @@ import '../Log In/LogIn.css'
 
 const Register = () => {
   const navigate = useNavigate()
-  
     const [agree,setAgree]=useState(false)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,7 +16,7 @@ const Register = () => {
       user,
       loading,
       error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
     
    const setRegEmail=(event)=>{
      setEmail(event.target.value)
@@ -28,10 +28,14 @@ const Register = () => {
      event.preventDefault()
      //for creating new user
      createUserWithEmailAndPassword(email, password)
+     if(loading){
+       return <Spinner animation="border" />
+     }
      
     if (user) {
-      navigate('/login')
-    }
+      navigate("/")
+      
+     }
     if (error) {
       return (
         <div>
@@ -73,18 +77,16 @@ const Register = () => {
       <Form.Control />
     </Form.Group>
 
-
     <Form.Group as={Col} controlId="formGridZip">
       <Form.Label>Zip</Form.Label>
       <Form.Control />
     </Form.Group>
   </Row>
-
-    <input onClick={()=>setAgree(!agree)} type='checkbox' id='terms' className='my-4'/>
+  <input onClick={()=>setAgree(!agree)} type='checkbox' id='terms' className='my-4'/>
     <label  className={`ps-2 ${agree? 'text-primary':'text-danger'}`} htmlFor='terms'>Accept All terms and Conditions</label>
     <p>If already Registered ? <Link className='check-register' to={'/login'}> LogIn Here</Link></p>
-  <Button disabled={!agree} className='mx-auto w-100' variant="primary" type="submit">
-    Register
+    <Button disabled={!agree} className='mx-auto w-100' variant="primary" type="submit">
+   Register
   </Button>
 </Form>
     </div>
